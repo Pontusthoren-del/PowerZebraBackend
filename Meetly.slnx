@@ -1,7 +1,13 @@
 <Solution>
   <Folder Name="/.github/" />
   <Folder Name="/.github/workflows/">
-    <File Path="ci.yaml" />
+    <File Path=".github/workflows/ci.yaml" />
+  </Folder>
+  <Folder Name="/Solution Items/">
+    <File Path=".dockerignore" />
+    <File Path=".gitignore" />
+    <File Path="Dockerfile" />
+    <File Path="README.md" />
   </Folder>
   <Project Path="Meetly.Api/Meetly.Api.csproj" />
 </Solution>
