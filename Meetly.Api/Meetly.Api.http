@@ -1,6 +1,0 @@
-@Meetly.Api_HostAddress = http://localhost:5156
-
-GET {{Meetly.Api_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
