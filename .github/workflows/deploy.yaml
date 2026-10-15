@@ -4,8 +4,8 @@ on:
       - main
 
 env: 
-  APP_NAME: Meetly
-  IMAGE_NAME: viktoradersson/meetlyapi
+  APP_NAME: meetly
+  IMAGE_NAME: meetlyapi
 
 jobs:
   build-and-push:
