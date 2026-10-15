@@ -1,3 +1,7 @@
 <Solution>
+  <Folder Name="/.github/" />
+  <Folder Name="/.github/workflows/">
+    <File Path="ci.yaml" />
+  </Folder>
   <Project Path="Meetly.Api/Meetly.Api.csproj" />
 </Solution>
