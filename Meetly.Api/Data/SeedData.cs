@@ -11,12 +11,28 @@ internal static class SeedData
 
     private static readonly DateTime SeedCreatedAt = new(2026, 10, 16, 8, 0, 0, DateTimeKind.Utc);
 
+    // Identity behöver normaliserade fält och en stämpel för att inloggning ska fungera
+    private static User DemoUser(int id, string name, string email, string stamp) => new()
+    {
+        Id = id,
+        Name = name,
+        UserName = email,
+        NormalizedUserName = email.ToUpperInvariant(),
+        Email = email,
+        NormalizedEmail = email.ToUpperInvariant(),
+        EmailConfirmed = true,
+        PasswordHash = DemoPasswordHash,
+        SecurityStamp = stamp,
+        ConcurrencyStamp = stamp,
+        CreatedAt = SeedCreatedAt
+    };
+
     public static void Seed(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<User>().HasData(
-            new User { Id = 1, Name = "Demo Användare", Email = "demo@meetly.se", PasswordHash = DemoPasswordHash, CreatedAt = SeedCreatedAt },
-            new User { Id = 2, Name = "Anna Svensson", Email = "anna@meetly.se", PasswordHash = DemoPasswordHash, CreatedAt = SeedCreatedAt },
-            new User { Id = 3, Name = "Johan Berg", Email = "johan@meetly.se", PasswordHash = DemoPasswordHash, CreatedAt = SeedCreatedAt }
+            DemoUser(1, "Demo Användare", "demo@meetly.se", "6f1c2b7e-3a4d-4c8e-9b21-1a2b3c4d5e01"),
+            DemoUser(2, "Anna Svensson", "anna@meetly.se", "6f1c2b7e-3a4d-4c8e-9b21-1a2b3c4d5e02"),
+            DemoUser(3, "Johan Berg", "johan@meetly.se", "6f1c2b7e-3a4d-4c8e-9b21-1a2b3c4d5e03")
         );
 
         modelBuilder.Entity<Meetup>().HasData(
