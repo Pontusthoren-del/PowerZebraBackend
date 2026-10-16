@@ -1,20 +1,13 @@
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Identity;
 
 namespace Meetly.Api.Models;
 
-public class User
+// E-post, användarnamn och lösenordshash kommer från IdentityUser
+public class User : IdentityUser<int>
 {
-    public int Id { get; set; }
-
     [Required, MaxLength(100)]
     public string Name { get; set; } = string.Empty;
-
-    [Required, MaxLength(256), EmailAddress]
-    public string Email { get; set; } = string.Empty;
-
-    // Bara hashen sparas, aldrig lösenordet
-    [Required]
-    public string PasswordHash { get; set; } = string.Empty;
 
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
