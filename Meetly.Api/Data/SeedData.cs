@@ -3,20 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Meetly.Api.Data;
 
-// Seed-data som följer med migrationen (HasData).
-// OBS: HasData kräver fasta värden – använd ALDRIG DateTime.Now här,
-// då skapar varje ny migration om all seed-data.
-//
-// Upplägg:
-//  - Passerade meetups (sep–okt 2026) -> behövs för "Tidigare" i profilen (US6) och recensioner (US9)
-//  - Kommande meetups (nov–dec 2026)  -> listan, sök, filter, anmälan (US3, US4, US5, US10)
-//  - Meetup 8 är FULL (kapacitet 2, två anmälda) -> demo av "Fullt" / 409 (US5)
-//  - Demo-användaren (id 1) är anmäld till passerade meetups men har inte recenserat id 1 -> demo av US9
 internal static class SeedData
 {
-    // Lösenord för ALLA demo-konton: Meetly123!
-    // Hash i formatet från ASP.NET Core PasswordHasher<User> (v3: PBKDF2-HMACSHA512, 100 000 iterationer).
-    // Väljer ni BCrypt i stället för PasswordHasher: byt ut hashen mot en BCrypt-hash av samma lösenord.
+    // Meetly123! (PasswordHasher<User>)
     private const string DemoPasswordHash =
         "AQAAAAIAAYagAAAAELQUVSI41fWgagZyE9pXUUYzvqTPEox9yqsFS6n9svrFyah6L++e8zsbjJJgzyom2g==";
 
@@ -31,7 +20,7 @@ internal static class SeedData
         );
 
         modelBuilder.Entity<Meetup>().HasData(
-            // --- Passerade ---
+            // Passerade
             new Meetup
             {
                 Id = 1,
@@ -77,7 +66,7 @@ internal static class SeedData
                 Category = "Friluftsliv"
             },
 
-            // --- Kommande ---
+            // Kommande
             new Meetup
             {
                 Id = 5,
@@ -169,18 +158,16 @@ internal static class SeedData
         );
 
         modelBuilder.Entity<Registration>().HasData(
-            // Demo-användaren: två passerade + två kommande
             new Registration { Id = 1, UserId = 1, MeetupId = 1, RegisteredAt = new DateTime(2026, 9, 1, 12, 0, 0, DateTimeKind.Utc) },
             new Registration { Id = 2, UserId = 1, MeetupId = 3, RegisteredAt = new DateTime(2026, 9, 25, 12, 0, 0, DateTimeKind.Utc) },
             new Registration { Id = 3, UserId = 1, MeetupId = 5, RegisteredAt = SeedCreatedAt },
             new Registration { Id = 4, UserId = 1, MeetupId = 7, RegisteredAt = SeedCreatedAt },
 
-            // Anna och Johan
             new Registration { Id = 5, UserId = 2, MeetupId = 2, RegisteredAt = new DateTime(2026, 9, 10, 12, 0, 0, DateTimeKind.Utc) },
             new Registration { Id = 6, UserId = 3, MeetupId = 1, RegisteredAt = new DateTime(2026, 9, 2, 12, 0, 0, DateTimeKind.Utc) },
             new Registration { Id = 7, UserId = 2, MeetupId = 3, RegisteredAt = new DateTime(2026, 9, 26, 12, 0, 0, DateTimeKind.Utc) },
 
-            // Meetup 8 (kapacitet 2) blir FULL
+            // Meetup 8 blir full
             new Registration { Id = 8, UserId = 2, MeetupId = 8, RegisteredAt = SeedCreatedAt },
             new Registration { Id = 9, UserId = 3, MeetupId = 8, RegisteredAt = SeedCreatedAt }
         );
