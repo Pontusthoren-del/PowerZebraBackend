@@ -9,9 +9,7 @@ builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
-// Databas – connection string "DefaultConnection":
-//  - lokalt: appsettings.Development.json (LocalDB)
-//  - Azure: App Service-inställning ConnectionStrings__DefaultConnection (ALDRIG i repot)
+// Lokalt från appsettings.Development.json, i Azure från App Service-inställningarna
 builder.Services.AddDbContext<MeetlyDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 

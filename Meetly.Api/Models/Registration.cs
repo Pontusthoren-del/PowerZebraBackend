@@ -1,8 +1,6 @@
 namespace Meetly.Api.Models;
 
-// Kopplingstabell User <-> Meetup ("User X är anmäld till Meetup Y").
-// Egen entitet i stället för ren many-to-many, så vi kan spara när man anmälde sig.
-// Paret (UserId, MeetupId) är unikt – man kan inte anmäla sig två gånger (US5).
+// Kopplar ihop en användare med en meetup hen är anmäld till
 public class Registration
 {
     public int Id { get; set; }

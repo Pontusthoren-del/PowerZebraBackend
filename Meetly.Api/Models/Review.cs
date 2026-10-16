@@ -2,8 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Meetly.Api.Models;
 
-// VG-US9: betyg + recension. Max en per användare och meetup (unikt index i DbContext).
-// Regeln "bara om man var anmäld och meetupen har passerat" kollas i controllern.
+// Betyg 1–5 och en valfri kommentar på en meetup
 public class Review
 {
     public int Id { get; set; }

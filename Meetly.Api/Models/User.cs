@@ -9,11 +9,10 @@ public class User
     [Required, MaxLength(100)]
     public string Name { get; set; } = string.Empty;
 
-    // Unik – se index i MeetlyDbContext (US1)
     [Required, MaxLength(256), EmailAddress]
     public string Email { get; set; } = string.Empty;
 
-    // Lagra ALDRIG lösenord i klartext – bara hashen (US1)
+    // Bara hashen sparas, aldrig lösenordet
     [Required]
     public string PasswordHash { get; set; } = string.Empty;
 

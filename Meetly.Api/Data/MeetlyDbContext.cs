@@ -18,24 +18,21 @@ public class MeetlyDbContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
 
-        // --- User ---
-        // Unik e-post (US1) – databasen stoppar dubbletter även om koden missar det
+        // Samma e-post får inte finnas två gånger
         modelBuilder.Entity<User>()
             .HasIndex(u => u.Email)
             .IsUnique();
 
-        // --- Meetup ---
         modelBuilder.Entity<Meetup>(meetup =>
         {
-            // Listan sorteras/filtreras på datum (US3, US6, US10)
+            // Index för snabbare sortering på datum
             meetup.HasIndex(m => m.StartTime);
             meetup.ToTable(t => t.HasCheckConstraint("CK_Meetup_Capacity", "[Capacity] > 0"));
         });
 
-        // --- Registration (User <-> Meetup) ---
         modelBuilder.Entity<Registration>(registration =>
         {
-            // Samma användare kan inte anmäla sig två gånger till samma meetup (US5)
+            // En användare kan bara anmäla sig en gång per meetup
             registration.HasIndex(r => new { r.UserId, r.MeetupId }).IsUnique();
 
             registration.HasOne(r => r.User)
@@ -49,10 +46,9 @@ public class MeetlyDbContext : DbContext
                 .OnDelete(DeleteBehavior.Cascade);
         });
 
-        // --- Review (VG-US9) ---
         modelBuilder.Entity<Review>(review =>
         {
-            // Max en recension per användare och meetup
+            // En användare kan bara recensera en meetup en gång
             review.HasIndex(r => new { r.UserId, r.MeetupId }).IsUnique();
             review.ToTable(t => t.HasCheckConstraint("CK_Review_Rating", "[Rating] BETWEEN 1 AND 5"));
 
