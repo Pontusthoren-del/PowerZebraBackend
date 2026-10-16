@@ -1,3 +1,7 @@
+using Meetly.Api.Data;
+using Scalar.AspNetCore;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -5,6 +9,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+
+// Lokalt från appsettings.Development.json, i Azure från App Service-inställningarna
+builder.Services.AddDbContext<MeetlyDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),
+    sql=>sql.EnableRetryOnFailure()));
 
 // CORS – vilka frontend-URL:er som får anropa API:et läses från konfiguration (Cors:AllowedOrigins)
 var allowedOrigins = builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>() ?? [];
@@ -18,10 +27,19 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
+// Kör migreringar vid start, bara om det finns en databas att prata med
+if (!string.IsNullOrEmpty(builder.Configuration.GetConnectionString("DefaultConnection")))
+{
+    using var scope = app.Services.CreateScope();
+    var db = scope.ServiceProvider.GetRequiredService<MeetlyDbContext>();
+    db.Database.Migrate();
+}
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+    app.MapScalarApiReference();
 }
 
 // Ingen HTTPS-redirect: Azure App Service sköter HTTPS framför containern
