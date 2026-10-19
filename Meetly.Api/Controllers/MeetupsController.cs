@@ -22,7 +22,7 @@ public class MeetupsController : ControllerBase
     {
         var query = _db.Meetups
             .AsNoTracking()
-            .Where(m => m.StartTime >= DateTime.Now);
+            .Where(m => m.StartTime >= DateTime.UtcNow);
 
         if (!string.IsNullOrWhiteSpace(search))
         {

@@ -11,6 +11,12 @@ public class MeetlyDbContext : IdentityDbContext<User, IdentityRole<int>, int>
     {
     }
 
+    protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
+    {
+        // Databasen sparar inte tidszon, så vi talar om att alla tider är UTC
+        configurationBuilder.Properties<DateTime>().HaveConversion<UtcDateTimeConverter>();
+    }
+
     public DbSet<Meetup> Meetups => Set<Meetup>();
     public DbSet<Registration> Registrations => Set<Registration>();
     public DbSet<Review> Reviews => Set<Review>();
