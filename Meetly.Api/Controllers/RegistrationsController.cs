@@ -70,4 +70,26 @@ public class RegistrationsController(MeetlyDbContext db, UserManager<User> userM
             registeredCount,
             meetup.Capacity - registeredCount));
     }
+
+    // DELETE /api/meetups/5/registrations
+    // Tar bort den inloggade användarens egen anmälan. Platsen blir ledig direkt,
+    // eftersom AvailableSpots räknas om från antalet anmälningar vid varje läsning.
+    [HttpDelete]
+    public async Task<IActionResult> Unregister(int meetupId)
+    {
+        var user = await userManager.GetUserAsync(User);
+        if (user is null) return Unauthorized();
+
+        var registration = await db.Registrations
+            .FirstOrDefaultAsync(r => r.MeetupId == meetupId && r.UserId == user.Id);
+
+        if (registration is null)
+            return Problem(statusCode: StatusCodes.Status404NotFound,
+                title: "Du är inte anmäld till den här meetupen.");
+
+        db.Registrations.Remove(registration);
+        await db.SaveChangesAsync();
+
+        return NoContent();
+    }
 }
