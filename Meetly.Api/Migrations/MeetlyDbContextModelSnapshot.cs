@@ -79,7 +79,7 @@ namespace Meetly.Api.Migrations
                             Description = "Vi går igenom useEffect, useMemo och egna hooks med kodexempel. Ta med laptop!",
                             Host = "Anna Svensson",
                             Location = "Campus Varberg, sal 2",
-                            StartTime = new DateTime(2026, 9, 10, 18, 0, 0, 0, DateTimeKind.Unspecified),
+                            StartTime = new DateTime(2026, 9, 10, 16, 0, 0, 0, DateTimeKind.Utc),
                             Title = "React-kväll: hooks på riktigt"
                         },
                         new
@@ -90,7 +90,7 @@ namespace Meetly.Api.Migrations
                             Description = "Lugnt tempo, ca 6 km från Kallbadhuset till Apelviken och tillbaka. Fika efteråt.",
                             Host = "Johan Berg",
                             Location = "Kallbadhuset, Varberg",
-                            StartTime = new DateTime(2026, 9, 20, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            StartTime = new DateTime(2026, 9, 20, 6, 0, 0, 0, DateTimeKind.Utc),
                             Title = "Morgonlöpning längs strandpromenaden"
                         },
                         new
@@ -101,7 +101,7 @@ namespace Meetly.Api.Migrations
                             Description = "Allt från Catan till snabba kortspel. Nybörjare varmt välkomna.",
                             Host = "Anna Svensson",
                             Location = "Stadsbiblioteket, Varberg",
-                            StartTime = new DateTime(2026, 10, 2, 18, 30, 0, 0, DateTimeKind.Unspecified),
+                            StartTime = new DateTime(2026, 10, 2, 16, 30, 0, 0, DateTimeKind.Utc),
                             Title = "Brädspelskväll"
                         },
                         new
@@ -112,7 +112,7 @@ namespace Meetly.Api.Migrations
                             Description = "Guidad tur där vi lär oss känna igen ätliga svampar. Ta med korg och kniv.",
                             Host = "Johan Berg",
                             Location = "Åkulla bokskogar, parkeringen",
-                            StartTime = new DateTime(2026, 10, 4, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            StartTime = new DateTime(2026, 10, 4, 8, 0, 0, 0, DateTimeKind.Utc),
                             Title = "Svampplockning i Åkulla bokskogar"
                         },
                         new
@@ -123,7 +123,7 @@ namespace Meetly.Api.Migrations
                             Description = "Från tomt projekt till ett API med EF Core och Swagger på en kväll.",
                             Host = "Anna Svensson",
                             Location = "Campus Varberg, sal 1",
-                            StartTime = new DateTime(2026, 11, 5, 18, 0, 0, 0, DateTimeKind.Unspecified),
+                            StartTime = new DateTime(2026, 11, 5, 17, 0, 0, 0, DateTimeKind.Utc),
                             Title = "Intro till ASP.NET Core Web API"
                         },
                         new
@@ -134,7 +134,7 @@ namespace Meetly.Api.Migrations
                             Description = "Sex viner från olika regioner och grunderna i hur man provar vin.",
                             Host = "Johan Berg",
                             Location = "Societetshuset, Varberg",
-                            StartTime = new DateTime(2026, 11, 12, 19, 0, 0, 0, DateTimeKind.Unspecified),
+                            StartTime = new DateTime(2026, 11, 12, 18, 0, 0, 0, DateTimeKind.Utc),
                             Title = "Vinprovning för nybörjare"
                         },
                         new
@@ -145,7 +145,7 @@ namespace Meetly.Api.Migrations
                             Description = "Vi fotograferar Varbergs fästning i skymningen. Mobilkamera räcker gott.",
                             Host = "Anna Svensson",
                             Location = "Varbergs fästning, entrén",
-                            StartTime = new DateTime(2026, 11, 14, 15, 0, 0, 0, DateTimeKind.Unspecified),
+                            StartTime = new DateTime(2026, 11, 14, 14, 0, 0, 0, DateTimeKind.Utc),
                             Title = "Fotopromenad på fästningen"
                         },
                         new
@@ -156,7 +156,7 @@ namespace Meetly.Api.Migrations
                             Description = "En bana, fyra spelare. Platserna går fort!",
                             Host = "Johan Berg",
                             Location = "Varbergs Padelcenter",
-                            StartTime = new DateTime(2026, 11, 18, 17, 0, 0, 0, DateTimeKind.Unspecified),
+                            StartTime = new DateTime(2026, 11, 18, 16, 0, 0, 0, DateTimeKind.Utc),
                             Title = "Padel – mixad dubbel"
                         },
                         new
@@ -167,7 +167,7 @@ namespace Meetly.Api.Migrations
                             Description = "Bilda lag på plats och bygg något kul. Pizza ingår.",
                             Host = "Anna Svensson",
                             Location = "Kunskapshuset, Göteborg",
-                            StartTime = new DateTime(2026, 11, 21, 9, 0, 0, 0, DateTimeKind.Unspecified),
+                            StartTime = new DateTime(2026, 11, 21, 8, 0, 0, 0, DateTimeKind.Utc),
                             Title = "Hackathon: bygg en app på en dag"
                         },
                         new
@@ -178,7 +178,7 @@ namespace Meetly.Api.Migrations
                             Description = "Vi bakar tillsammans och tar med oss hem. Allt material finns på plats.",
                             Host = "Johan Berg",
                             Location = "Folkets Hus, Varberg",
-                            StartTime = new DateTime(2026, 12, 6, 13, 0, 0, 0, DateTimeKind.Unspecified),
+                            StartTime = new DateTime(2026, 12, 6, 12, 0, 0, 0, DateTimeKind.Utc),
                             Title = "Julbak – lussekatter och pepparkakor"
                         },
                         new
@@ -189,7 +189,7 @@ namespace Meetly.Api.Migrations
                             Description = "Ett snabbt dopp i havet och sedan bastu. Handduk och badkläder behövs.",
                             Host = "Anna Svensson",
                             Location = "Kallbadhuset, Varberg",
-                            StartTime = new DateTime(2026, 12, 13, 9, 0, 0, 0, DateTimeKind.Unspecified),
+                            StartTime = new DateTime(2026, 12, 13, 8, 0, 0, 0, DateTimeKind.Utc),
                             Title = "Vinterbad och bastu"
                         },
                         new
@@ -200,7 +200,7 @@ namespace Meetly.Api.Migrations
                             Description = "NES, SNES och N64 kopplade till gamla TV-apparater. Turnering i Mario Kart.",
                             Host = "Johan Berg",
                             Location = "Halmstad bibliotek",
-                            StartTime = new DateTime(2026, 12, 17, 18, 0, 0, 0, DateTimeKind.Unspecified),
+                            StartTime = new DateTime(2026, 12, 17, 17, 0, 0, 0, DateTimeKind.Utc),
                             Title = "Retrospelkväll"
                         });
                 });
