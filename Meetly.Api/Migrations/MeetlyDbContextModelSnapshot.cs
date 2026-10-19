@@ -397,16 +397,21 @@ namespace Meetly.Api.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
@@ -460,8 +465,9 @@ namespace Meetly.Api.Migrations
                             CreatedAt = new DateTime(2026, 10, 16, 8, 0, 0, 0, DateTimeKind.Utc),
                             Email = "demo@meetly.se",
                             EmailConfirmed = true,
+                            FirstName = "Demo",
+                            LastName = "Användare",
                             LockoutEnabled = false,
-                            Name = "Demo Användare",
                             NormalizedEmail = "DEMO@MEETLY.SE",
                             NormalizedUserName = "DEMO@MEETLY.SE",
                             PasswordHash = "AQAAAAIAAYagAAAAELQUVSI41fWgagZyE9pXUUYzvqTPEox9yqsFS6n9svrFyah6L++e8zsbjJJgzyom2g==",
@@ -478,8 +484,9 @@ namespace Meetly.Api.Migrations
                             CreatedAt = new DateTime(2026, 10, 16, 8, 0, 0, 0, DateTimeKind.Utc),
                             Email = "anna@meetly.se",
                             EmailConfirmed = true,
+                            FirstName = "Anna",
+                            LastName = "Svensson",
                             LockoutEnabled = false,
-                            Name = "Anna Svensson",
                             NormalizedEmail = "ANNA@MEETLY.SE",
                             NormalizedUserName = "ANNA@MEETLY.SE",
                             PasswordHash = "AQAAAAIAAYagAAAAELQUVSI41fWgagZyE9pXUUYzvqTPEox9yqsFS6n9svrFyah6L++e8zsbjJJgzyom2g==",
@@ -496,8 +503,9 @@ namespace Meetly.Api.Migrations
                             CreatedAt = new DateTime(2026, 10, 16, 8, 0, 0, 0, DateTimeKind.Utc),
                             Email = "johan@meetly.se",
                             EmailConfirmed = true,
+                            FirstName = "Johan",
+                            LastName = "Berg",
                             LockoutEnabled = false,
-                            Name = "Johan Berg",
                             NormalizedEmail = "JOHAN@MEETLY.SE",
                             NormalizedUserName = "JOHAN@MEETLY.SE",
                             PasswordHash = "AQAAAAIAAYagAAAAELQUVSI41fWgagZyE9pXUUYzvqTPEox9yqsFS6n9svrFyah6L++e8zsbjJJgzyom2g==",
