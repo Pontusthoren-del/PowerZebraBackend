@@ -1,8 +1,10 @@
+## Meetly - Backend
+
 ## Live
 
 | | URL |
 |---|---|
-| Frontend | https://<meetly-frontend-domänen> |
+| Frontend | https://meetly-frontend-a9g6b7gvhdd2afga.norwayeast-01.azurewebsites.net |
 | Backend (API) | https://meetly-aed8cwgec3cshjhv.norwayeast-01.azurewebsites.net |
 | Hälsokoll | /api/health |
 
