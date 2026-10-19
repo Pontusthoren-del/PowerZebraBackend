@@ -1,4 +1,5 @@
 using Meetly.Api.Data;
+using Meetly.Api.Models;
 using Scalar.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,6 +15,11 @@ builder.Services.AddOpenApi();
 builder.Services.AddDbContext<MeetlyDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),
     sql=>sql.EnableRetryOnFailure()));
+
+// Inloggning med ASP.NET Core Identity (färdiga endpoints under /api/auth)
+builder.Services.AddAuthorization();
+builder.Services.AddIdentityApiEndpoints<User>()
+    .AddEntityFrameworkStores<MeetlyDbContext>();
 
 // CORS – vilka frontend-URL:er som får anropa API:et läses från konfiguration (Cors:AllowedOrigins)
 var allowedOrigins = builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>() ?? [];
@@ -45,8 +51,10 @@ if (app.Environment.IsDevelopment())
 // Ingen HTTPS-redirect: Azure App Service sköter HTTPS framför containern
 app.UseCors("Frontend");
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+app.MapGroup("/api/auth").MapIdentityApi<User>();
 
 app.Run();
