@@ -1,15 +1,16 @@
 using Meetly.Api.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Meetly.Api.Data;
 
-public class MeetlyDbContext : DbContext
+public class MeetlyDbContext : IdentityDbContext<User, IdentityRole<int>, int>
 {
     public MeetlyDbContext(DbContextOptions<MeetlyDbContext> options) : base(options)
     {
     }
 
-    public DbSet<User> Users => Set<User>();
     public DbSet<Meetup> Meetups => Set<Meetup>();
     public DbSet<Registration> Registrations => Set<Registration>();
     public DbSet<Review> Reviews => Set<Review>();
