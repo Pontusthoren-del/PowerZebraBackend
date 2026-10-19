@@ -18,7 +18,11 @@ builder.Services.AddDbContext<MeetlyDbContext>(options =>
 
 // Inloggning med ASP.NET Core Identity (färdiga endpoints under /api/auth)
 builder.Services.AddAuthorization();
-builder.Services.AddIdentityApiEndpoints<User>()
+builder.Services.AddIdentityApiEndpoints<User>(options =>
+    {
+        // Samma e-post får inte registreras två gånger
+        options.User.RequireUniqueEmail = true;
+    })
     .AddEntityFrameworkStores<MeetlyDbContext>();
 
 // CORS – vilka frontend-URL:er som får anropa API:et läses från konfiguration (Cors:AllowedOrigins)
