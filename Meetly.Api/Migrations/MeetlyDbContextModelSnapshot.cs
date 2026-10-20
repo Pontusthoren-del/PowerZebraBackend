@@ -202,6 +202,94 @@ namespace Meetly.Api.Migrations
                             Location = "Halmstad bibliotek",
                             StartTime = new DateTime(2026, 12, 17, 17, 0, 0, 0, DateTimeKind.Utc),
                             Title = "Retrospelkväll"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Capacity = 20,
+                            Category = "Kultur",
+                            Description = "Guidad promenad bland stadens skulpturer och gallerier. Avslutas med fika.",
+                            Host = "Anna Svensson",
+                            Location = "Falkenbergs museum, entrén",
+                            StartTime = new DateTime(2026, 11, 3, 17, 0, 0, 0, DateTimeKind.Utc),
+                            Title = "Konstpromenad i Falkenberg"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Capacity = 15,
+                            Category = "Teknik",
+                            Description = "Kort dragning om typade props och hooks, sedan fika och kodsnack.",
+                            Host = "Johan Berg",
+                            Location = "Kontorshotellet, Falkenberg",
+                            StartTime = new DateTime(2026, 11, 4, 7, 0, 0, 0, DateTimeKind.Utc),
+                            Title = "Frontend-fika: React och TypeScript"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Capacity = 3,
+                            Category = "Sport",
+                            Description = "Lugnt pass för alla nivåer. Ta med matta och varma kläder.",
+                            Host = "Anna Svensson",
+                            Location = "Skrea strand, Falkenberg",
+                            StartTime = new DateTime(2026, 11, 7, 9, 0, 0, 0, DateTimeKind.Utc),
+                            Title = "Yoga på stranden"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Capacity = 40,
+                            Category = "Spel",
+                            Description = "Lagquiz om allt från musik till geografi. Lag om max fyra personer.",
+                            Host = "Johan Berg",
+                            Location = "Harrys, Halmstad",
+                            StartTime = new DateTime(2026, 11, 10, 18, 0, 0, 0, DateTimeKind.Utc),
+                            Title = "Quizkväll"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            Capacity = 25,
+                            Category = "Friluftsliv",
+                            Description = "Ca 8 km runt naturreservatet med fågelskådning på vägen.",
+                            Host = "Anna Svensson",
+                            Location = "Getteröns naturreservat, Varberg",
+                            StartTime = new DateTime(2026, 11, 22, 9, 0, 0, 0, DateTimeKind.Utc),
+                            Title = "Vandring på Getterön"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            Capacity = 50,
+                            Category = "Kultur",
+                            Description = "Livejazz med lokala musiker. Biljett ingår, dryck köps på plats.",
+                            Host = "Johan Berg",
+                            Location = "Stadsteatern, Göteborg",
+                            StartTime = new DateTime(2026, 11, 27, 18, 0, 0, 0, DateTimeKind.Utc),
+                            Title = "Jazzkväll"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            Capacity = 10,
+                            Category = "Mat & dryck",
+                            Description = "Vi startar en surdeg och bakar bröd. Du får med dig en burk surdeg hem.",
+                            Host = "Anna Svensson",
+                            Location = "Folkets Hus, Falkenberg",
+                            StartTime = new DateTime(2026, 11, 28, 12, 0, 0, 0, DateTimeKind.Utc),
+                            Title = "Surdegskurs"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            Capacity = 30,
+                            Category = "Sport",
+                            Description = "Två varv, ca 5 km, i ditt eget tempo. Samling vid Plikta.",
+                            Host = "Johan Berg",
+                            Location = "Slottsskogen, Göteborg",
+                            StartTime = new DateTime(2026, 12, 5, 8, 0, 0, 0, DateTimeKind.Utc),
+                            Title = "Löpgrupp i Slottsskogen"
                         });
                 });
 
@@ -292,6 +380,20 @@ namespace Meetly.Api.Migrations
                         {
                             Id = 9,
                             MeetupId = 8,
+                            RegisteredAt = new DateTime(2026, 10, 16, 8, 0, 0, 0, DateTimeKind.Utc),
+                            UserId = 3
+                        },
+                        new
+                        {
+                            Id = 10,
+                            MeetupId = 15,
+                            RegisteredAt = new DateTime(2026, 10, 16, 8, 0, 0, 0, DateTimeKind.Utc),
+                            UserId = 2
+                        },
+                        new
+                        {
+                            Id = 11,
+                            MeetupId = 15,
                             RegisteredAt = new DateTime(2026, 10, 16, 8, 0, 0, 0, DateTimeKind.Utc),
                             UserId = 3
                         });
