@@ -11,7 +11,7 @@ namespace Meetly.Api.Controllers;
 [ApiController]
 [Route("api/me")]
 [Authorize]
-public class MeController(UserManager<User> userManager,MeetlyDbContext db) : ControllerBase
+public class MeController(UserManager<User> userManager, MeetlyDbContext db) : ControllerBase
 {
     // Returnerar den inloggade användaren. Frontend använder den för att visa namn i menyn
     // och för att kontrollera att token fortfarande gäller.
@@ -24,6 +24,7 @@ public class MeController(UserManager<User> userManager,MeetlyDbContext db) : Co
         return Ok(new { user.Id, user.FirstName, user.LastName, user.Email });
     }
 
+    // Den inloggades meetups, uppdelade i kommande och tidigare
     [HttpGet("registrations")]
     public async Task<ActionResult<MyRegistrationsDto>> GetMyRegistrations()
     {
@@ -31,8 +32,8 @@ public class MeController(UserManager<User> userManager,MeetlyDbContext db) : Co
 
         var meetups = await db.Registrations
             .AsNoTracking()
-            .Where(r=>r.UserId == userId)
-            .Select(r=> new MeetupDto(
+            .Where(r => r.UserId == userId)
+            .Select(r => new MeetupDto(
                r.Meetup.Id,
                 r.Meetup.Title,
                 r.Meetup.Description,
