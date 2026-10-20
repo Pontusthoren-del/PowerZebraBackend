@@ -12,7 +12,7 @@ public class Meetup
     [Required, MaxLength(2000)]
     public string Description { get; set; } = string.Empty;
 
-    // Svensk lokal tid
+    // Sparas i UTC, frontend visar svensk tid
     public DateTime StartTime { get; set; }
 
     [Required, MaxLength(200)]
