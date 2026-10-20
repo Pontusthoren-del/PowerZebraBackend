@@ -172,6 +172,96 @@ internal static class SeedData
                 Host = "Johan Berg",
                 Capacity = 20,
                 Category = "Spel"
+            },
+
+            // Fler kommande, så att filtren har något att visa
+            new Meetup
+            {
+                Id = 13,
+                Title = "Konstpromenad i Falkenberg",
+                Description = "Guidad promenad bland stadens skulpturer och gallerier. Avslutas med fika.",
+                StartTime = new DateTime(2026, 11, 3, 17, 0, 0, DateTimeKind.Utc),
+                Location = "Falkenbergs museum, entrén",
+                Host = "Anna Svensson",
+                Capacity = 20,
+                Category = "Kultur"
+            },
+            new Meetup
+            {
+                Id = 14,
+                Title = "Frontend-fika: React och TypeScript",
+                Description = "Kort dragning om typade props och hooks, sedan fika och kodsnack.",
+                StartTime = new DateTime(2026, 11, 4, 7, 0, 0, DateTimeKind.Utc),
+                Location = "Kontorshotellet, Falkenberg",
+                Host = "Johan Berg",
+                Capacity = 15,
+                Category = "Teknik"
+            },
+            new Meetup
+            {
+                Id = 15,
+                Title = "Yoga på stranden",
+                Description = "Lugnt pass för alla nivåer. Ta med matta och varma kläder.",
+                StartTime = new DateTime(2026, 11, 7, 9, 0, 0, DateTimeKind.Utc),
+                Location = "Skrea strand, Falkenberg",
+                Host = "Anna Svensson",
+                Capacity = 3,
+                Category = "Sport"
+            },
+            new Meetup
+            {
+                Id = 16,
+                Title = "Quizkväll",
+                Description = "Lagquiz om allt från musik till geografi. Lag om max fyra personer.",
+                StartTime = new DateTime(2026, 11, 10, 18, 0, 0, DateTimeKind.Utc),
+                Location = "Harrys, Halmstad",
+                Host = "Johan Berg",
+                Capacity = 40,
+                Category = "Spel"
+            },
+            new Meetup
+            {
+                Id = 17,
+                Title = "Vandring på Getterön",
+                Description = "Ca 8 km runt naturreservatet med fågelskådning på vägen.",
+                StartTime = new DateTime(2026, 11, 22, 9, 0, 0, DateTimeKind.Utc),
+                Location = "Getteröns naturreservat, Varberg",
+                Host = "Anna Svensson",
+                Capacity = 25,
+                Category = "Friluftsliv"
+            },
+            new Meetup
+            {
+                Id = 18,
+                Title = "Jazzkväll",
+                Description = "Livejazz med lokala musiker. Biljett ingår, dryck köps på plats.",
+                StartTime = new DateTime(2026, 11, 27, 18, 0, 0, DateTimeKind.Utc),
+                Location = "Stadsteatern, Göteborg",
+                Host = "Johan Berg",
+                Capacity = 50,
+                Category = "Kultur"
+            },
+            new Meetup
+            {
+                Id = 19,
+                Title = "Surdegskurs",
+                Description = "Vi startar en surdeg och bakar bröd. Du får med dig en burk surdeg hem.",
+                StartTime = new DateTime(2026, 11, 28, 12, 0, 0, DateTimeKind.Utc),
+                Location = "Folkets Hus, Falkenberg",
+                Host = "Anna Svensson",
+                Capacity = 10,
+                Category = "Mat & dryck"
+            },
+            new Meetup
+            {
+                Id = 20,
+                Title = "Löpgrupp i Slottsskogen",
+                Description = "Två varv, ca 5 km, i ditt eget tempo. Samling vid Plikta.",
+                StartTime = new DateTime(2026, 12, 5, 8, 0, 0, DateTimeKind.Utc),
+                Location = "Slottsskogen, Göteborg",
+                Host = "Johan Berg",
+                Capacity = 30,
+                Category = "Sport"
             }
         );
 
@@ -187,7 +277,11 @@ internal static class SeedData
 
             // Meetup 8 blir full
             new Registration { Id = 8, UserId = 2, MeetupId = 8, RegisteredAt = SeedCreatedAt },
-            new Registration { Id = 9, UserId = 3, MeetupId = 8, RegisteredAt = SeedCreatedAt }
+            new Registration { Id = 9, UserId = 3, MeetupId = 8, RegisteredAt = SeedCreatedAt },
+
+            // Meetup 15 har en plats kvar
+            new Registration { Id = 10, UserId = 2, MeetupId = 15, RegisteredAt = SeedCreatedAt },
+            new Registration { Id = 11, UserId = 3, MeetupId = 15, RegisteredAt = SeedCreatedAt }
         );
 
         modelBuilder.Entity<Review>().HasData(
