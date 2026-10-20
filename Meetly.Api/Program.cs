@@ -1,5 +1,6 @@
 using Meetly.Api.Data;
 using Meetly.Api.Models;
+using Microsoft.AspNetCore.DataProtection;
 using Scalar.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,6 +16,10 @@ builder.Services.AddOpenApi();
 builder.Services.AddDbContext<MeetlyDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),
     sql=>sql.EnableRetryOnFailure()));
+
+// Spara nycklarna i databasen i stället för i containern, annars loggas alla ut vid omstart
+builder.Services.AddDataProtection()
+    .PersistKeysToDbContext<MeetlyDbContext>();
 
 // Inloggning med ASP.NET Core Identity (färdiga endpoints under /api/auth)
 builder.Services.AddAuthorization();

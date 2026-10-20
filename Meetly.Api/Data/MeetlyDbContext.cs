@@ -1,11 +1,12 @@
 using Meetly.Api.Models;
+using Microsoft.AspNetCore.DataProtection.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Meetly.Api.Data;
 
-public class MeetlyDbContext : IdentityDbContext<User, IdentityRole<int>, int>
+public class MeetlyDbContext : IdentityDbContext<User, IdentityRole<int>, int>, IDataProtectionKeyContext
 {
     public MeetlyDbContext(DbContextOptions<MeetlyDbContext> options) : base(options)
     {
@@ -20,6 +21,10 @@ public class MeetlyDbContext : IdentityDbContext<User, IdentityRole<int>, int>
     public DbSet<Meetup> Meetups => Set<Meetup>();
     public DbSet<Registration> Registrations => Set<Registration>();
     public DbSet<Review> Reviews => Set<Review>();
+
+    // Nycklar som signerar inloggningstokens. Sparas i databasen så att de
+    // överlever omstart/deploy av containern.
+    public DbSet<DataProtectionKey> DataProtectionKeys => Set<DataProtectionKey>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
