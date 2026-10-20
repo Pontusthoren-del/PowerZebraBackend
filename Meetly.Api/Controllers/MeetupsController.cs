@@ -27,7 +27,12 @@ public class MeetupsController : ControllerBase
         if (!string.IsNullOrWhiteSpace(search))
         {
             var term = search.Trim();
-            query = query.Where(m => m.Title.Contains(term) || m.Description.Contains(term));
+            query = query.Where(m =>
+                m.Title.Contains(term) ||
+                m.Description.Contains(term) ||
+                m.Location.Contains(term) ||
+                m.Host.Contains(term) ||
+                m.Category.Contains(term));
         }
 
         var meetups = await query
