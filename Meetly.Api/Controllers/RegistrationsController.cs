@@ -80,6 +80,17 @@ public class RegistrationsController(MeetlyDbContext db, UserManager<User> userM
         var user = await userManager.GetUserAsync(User);
         if (user is null) return Unauthorized();
 
+        // Man kan inte ändra sin anmälan till en meetup som redan har varit
+        var startTime = await db.Meetups
+            .AsNoTracking()
+            .Where(m => m.Id == meetupId)
+            .Select(m => (DateTime?)m.StartTime)
+            .FirstOrDefaultAsync();
+
+        if (startTime is not null && startTime <= DateTime.UtcNow)
+            return Problem(statusCode: StatusCodes.Status400BadRequest,
+                title: "Meetupen har passerat.");
+
         var registration = await db.Registrations
             .FirstOrDefaultAsync(r => r.MeetupId == meetupId && r.UserId == user.Id);
 
